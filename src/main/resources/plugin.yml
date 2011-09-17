@@ -1,0 +1,11 @@
+author: K900 
+database: false 
+description: /tgm used to stand for Toggle God Mode in TES series, but now it's Toggle Game Mode.
+main: me.k900.plugins.tgm.ToggleGameMode
+name: TGM
+startup: postworld
+version: '1.0'
+commands:
+    tgm:
+        description: Toggle gamemode
+        usage: /tgm [player]
