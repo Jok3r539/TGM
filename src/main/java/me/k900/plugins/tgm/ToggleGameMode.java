@@ -4,6 +4,7 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
 
+@SuppressWarnings({"UnusedDeclaration"})
 public class ToggleGameMode extends JavaPlugin {
 
     public void onDisable() {
