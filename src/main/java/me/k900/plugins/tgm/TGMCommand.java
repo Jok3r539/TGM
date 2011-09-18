@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.config.Configuration;
@@ -36,19 +37,25 @@ public class TGMCommand extends PlayerListener implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         Object target = null;
         String gm = null;
-        if (commandSender.isOp() || config.getBoolean("config.allow-all", false)) {
-            if (strings.length == 0) {
+        if (strings.length == 0) {
+            if (commandSender.hasPermission("tgm.self")) {
                 target = commandSender;
                 gm = "swap";
             }
-            if (strings.length == 1) {
-                if (strings[0].equals("c")) {
+        }
+        if (strings.length == 1) {
+            if (strings[0].equals("c")) {
+                if (commandSender.hasPermission("tgm.self")) {
                     target = commandSender;
                     gm = "creative";
-                } else if (strings[0].equals("s")) {
+                }
+            } else if (strings[0].equals("s")) {
+                if (commandSender.hasPermission("tgm.self")) {
                     target = commandSender;
                     gm = "survival";
-                } else {
+                }
+            } else {
+                if (commandSender.hasPermission("tgm.others")) {
                     Player p = server.getPlayer(strings[0]);
                     if (p != null) {
                         target = p;
@@ -56,7 +63,9 @@ public class TGMCommand extends PlayerListener implements CommandExecutor {
                     }
                 }
             }
-            if (strings.length == 2) {
+        }
+        if (strings.length == 2) {
+            if (commandSender.hasPermission("tgm.others")) {
                 Player p = server.getPlayer(strings[0]);
                 if (p != null) {
                     target = p;
@@ -68,17 +77,17 @@ public class TGMCommand extends PlayerListener implements CommandExecutor {
                     gm = "survival";
                 }
             }
-            if ((target != null) && (gm != null)) {
-                if (gm.equals("swap")) {
-                    swapGM(target);
-                    return true;
-                } else if (gm.equals("creative")) {
-                    setGM(target, GameMode.CREATIVE);
-                    return true;
-                } else if (gm.equals("survival")) {
-                    setGM(target, GameMode.SURVIVAL);
-                    return true;
-                }
+        }
+        if ((target != null) && (gm != null)) {
+            if (gm.equals("swap")) {
+                swapGM(target);
+                return true;
+            } else if (gm.equals("creative")) {
+                setGM(target, GameMode.CREATIVE);
+                return true;
+            } else if (gm.equals("survival")) {
+                setGM(target, GameMode.SURVIVAL);
+                return true;
             }
         }
         return false;

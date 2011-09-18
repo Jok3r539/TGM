@@ -9,3 +9,11 @@ commands:
     tgm:
         description: Toggle gamemode
         usage: /tgm [player]
+    permissions:
+        tgm.self:
+            default: op
+            description: Can change gamemode for him/herself
+
+        tgm.others:
+            default: op
+            description: Can change gamemode for others
