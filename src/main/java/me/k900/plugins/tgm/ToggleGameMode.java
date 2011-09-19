@@ -8,7 +8,7 @@ import org.bukkit.util.config.Configuration;
 public class ToggleGameMode extends JavaPlugin {
 
     public void onDisable() {
-        System.out.println("[TGM] TGM 1.0 is now disabled!");
+        System.out.println("[TGM] TGM 0.2 is now disabled!");
     }
 
     public void onEnable() {
@@ -19,7 +19,7 @@ public class ToggleGameMode extends JavaPlugin {
         TGMCommand command = new TGMCommand(getServer(), config);
         getCommand("tgm").setExecutor(command);
         getServer().getPluginManager().registerEvent(Event.Type.PLAYER_TELEPORT, command, Event.Priority.Highest, this);
-        System.out.println("[TGM] TGM 1.0 is now enabled!");
+        System.out.println("[TGM] TGM 0.2 is now enabled!");
     }
 
 }

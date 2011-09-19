@@ -4,7 +4,7 @@ description: /tgm used to stand for Toggle God Mode in TES series, but now it's 
 main: me.k900.plugins.tgm.ToggleGameMode
 name: TGM
 startup: postworld
-version: '0.1'
+version: '0.2'
 commands:
     tgm:
         description: Toggle gamemode
@@ -15,6 +15,12 @@ commands:
           /tgm c/s - switch your game mode to creative/survival
           /tgm K900 c/s - switch K900's game mode to creative/survival
     permissions:
+        tgm.*:
+            default: op
+            description: Can change gamemode for everyone.
+                children:
+                    tgm.others: true
+                    tgm.self: true
         tgm.self:
             default: op
             description: Can change gamemode for him/herself
