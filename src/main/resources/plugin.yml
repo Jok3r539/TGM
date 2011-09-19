@@ -18,9 +18,9 @@ commands:
         tgm.*:
             default: op
             description: Can change gamemode for everyone.
-                children:
-                    tgm.others: true
-                    tgm.self: true
+            children:
+                tgm.others: true
+                tgm.self: true
         tgm.self:
             default: op
             description: Can change gamemode for him/herself
