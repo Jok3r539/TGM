@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.k900.plugins.tgm</groupId>
     <artifactId>TGM</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>TGM</name>
     <repositories>
         <repository>
